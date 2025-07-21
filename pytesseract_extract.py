@@ -1,12 +1,22 @@
-import pytesseract
-from PIL import Image
+# import system modules
 import sys
 import os
+
+# import external modules
+import pytesseract
+from PIL import Image
+
+""" Module documentation
+"""
 
 # Optional: Set the tesseract command path (needed on Windows if not in PATH)
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+
 def extract_text_from_image(image_path):
+    """ Extracts texts from machinery image. The texts returned are:
+        Part Number / Serial Number / Aircraft ID / Engine Number / Time on Wing
+    """
     if not os.path.exists(image_path):
         print(f"File not found: {image_path}")
         return
@@ -21,8 +31,10 @@ def extract_text_from_image(image_path):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python ocr_extract.py path_to_image")
-    else:
-        extract_text_from_image(sys.argv[1])
+
+if __name__=="__main__":
+    images_dir = os.path.abspath('images')
+    texts = {}
+    for image in os.listdir('images'):
+        image_path = images_dir + '/' + image
+        texts[image] = extract_text_from_image(image_path)
