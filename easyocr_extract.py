@@ -12,16 +12,13 @@ def extract_text_from_image(image_path):
     """ Extracts texts from machinery image. The texts returned are:
         Part Number / Serial Number / Aircraft ID / Engine Number / Time on Wing
     """
-    # Create an EasyOCR reader (specify language(s))
     reader = easyocr.Reader(['en'])  # You can add more languages like ['en', 'fr']
-
-    # Read text from an image
-    results = reader.readtext(image_path)
+    results = reader.readtext(image_path,  paragraph=True)
 
     texts = ''
-    for (bbox, text, confidence) in results:
-        texts += f'{text} '
-        print(f"Detected text: {text} (Confidence: {confidence:.2f})")
+    for bounding_box, text in results:
+        texts += f'{text} \n'
+        # print(f"Detected text: {text} (Confidence: {unknown:.2f})")
     return texts    
 
 
