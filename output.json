@@ -1,10 +1,34 @@
 {
-   "9.jpg": "GENERAL ELECTRIC AB FUEL CONTROL ASSY 6009T92607A SER GAT9029 SUBASSY XX US 22 786032 LYNN MASS.",
-   "15.jpg": "GENERAL & ELECTRIC AB FUEL CONTROL ASSY 60091926 07 SER GAT 29024 SUBASSY 36032 LYNN, MASS.",
-   "12.jpg": "107 Pump & Engine GOODRICH Control Systems, Inc. MAIN FUEL PUMP MOD NO MEP 130 S/N 99207SOCN 14AAA0926 11599 116995-01A1 1399 66511",
-   "13.jpg": "Pump & Engine GOODRICH Control Systems, Inc. MAIN FUEL PUMP MOD NO MEP 130 S/N 99207SOCN 14AAA0926 11599 116995-01A1",
-   "10.jpg": "GENERAL ELECTRIC AB FUEL CONTROL ASSY 600919260 7A SER 8372 SUBASSY 20 US 24 36032 LINK MASS 9",
-   "15 color.png": "GENERAL & ELECTRIC AB FUEL CONTROL ASSY 60091926 07 SER GAT 29024 SUBASSY 86032 LYNN, MASS.",
-   "27.jpg": "GENERAL ELECTRIC AB FUEL CONTROL ASSY 3972207 SER P40 SUBASSY US 24 NP 186832 UNN. MASS",
-   "2.jpg": "GENERAL ELECTRIC A B FUEL CONTROL ASSY 600919260 A SER 8233 SUBASSY MP 186032 ** 22% US LYNN, MASS DOJNST SMPCO"
+   "9.jpg": {
+      "part number": "6009T92607A",
+      "serial nnumber": "9029"
+   },
+   "15.jpg": {
+      "part number": "6009192607",
+      "serial nnumber": "29024"
+   },
+   "12.jpg": {
+      "part number": "",
+      "serial nnumber": ""
+   },
+   "13.jpg": {
+      "part number": "",
+      "serial nnumber": ""
+   },
+   "10.jpg": {
+      "part number": "6009192607A",
+      "serial nnumber": "8372"
+   },
+   "15 color.png": {
+      "part number": "6009192607",
+      "serial nnumber": "29024"
+   },
+   "27.jpg": {
+      "part number": "3972207",
+      "serial nnumber": "P40"
+   },
+   "2.jpg": {
+      "part number": "600919260A",
+      "serial nnumber": "8233"
+   }
 }

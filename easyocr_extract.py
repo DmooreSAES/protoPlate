@@ -34,7 +34,7 @@ def extract_text_from_image(image_path):
     return texts
 
 
-class Image:
+class ImageExtract:
     "Class representing all actions on Image"
 
     def __init__(self, path):
@@ -75,7 +75,7 @@ class Image:
         print(texts)
         return texts.upper()
     
-    def get_part_number_and_serial_number(self):
+    def get_part_and_serial_numbers(self):
         """ Extracts machine part number, and serial number via regex from the already extracted image text
         """
         match = re.findall('ASSY.+SUBASSY', self.image_text)
@@ -91,7 +91,7 @@ class Image:
 
 
 def remove_boxes_morphological(image_path):
-    """ Pretty good
+    """ Slithly good
     """
     # Convert to grayscale
     image = cv2.imread(image_path)
@@ -123,6 +123,7 @@ def remove_boxes_morphological(image_path):
     return result
 
 def remove_boxes_contours(image_path):
+    "Produces unexpected results for now"
     image = cv2.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
@@ -164,9 +165,10 @@ if __name__=="__main__":
         image_path = images_dir + '/' + image
         # remove_boxes_morphological(image_path)
         # continue
-        image_ = Image(image_path)
-        image_.get_part_number_and_serial_number()
-        print(image_.part_number, image_.serial_number)
-        texts[image] = extract_text_from_image(image_path)
+        image_extract = ImageExtract(image_path)
+        image_extract.get_part_and_serial_numbers()
+        print(image_extract.part_number, image_extract.serial_number)
+        texts[image] = image_extract.image_text
+        # texts[image] = extract_text_from_image(image_path)
     with open('output.json', 'w') as f:
         json.dump(texts, f, indent=3)
