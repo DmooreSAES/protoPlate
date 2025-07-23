@@ -76,7 +76,7 @@ class ImageExtract:
 
 
 if __name__=="__main__":
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/Users/ibrahimaderinto/Desktop/Upwork/Dennis Moore/protoPlate/visionAI Keys.json'
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'visionAI Keys.json'
     images_dir = os.path.abspath('images')
     texts = {}
     for image in os.listdir('images'):
