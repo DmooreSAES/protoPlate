@@ -40,29 +40,28 @@ class ImageExtract:
     def __init__(self, path):
         if not os.path.exists(image_path):
             assert(f"File not found: {image_path}")
-        self.image_path = path
-        self.image = self.preprocess_image()
+        self.image_path = path 
+        # self.image = self.preprocess_image()
         self.image_text = self.get_image_text()
-        self.part_number = ''
-        self.serial_number = ''
+        self.part_number, self.serial_number = self.get_part_and_serial_numbers()
 
     def preprocess_image(self):
         """ Preprocess image to allow better text extraction
         """
         image = cv2.imread(self.image_path)
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        # blurred = cv2.GaussianBlur(gray, (3, 3), 0) # Not good
+        # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        # # blurred = cv2.GaussianBlur(gray, (3, 3), 0) # Not good
         # cv2.imshow('Blurred', gray)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-        return gray
+        return image
 
 
     def get_image_text(self):
         """ Extracts texts from machinery image.
         """
         reader = easyocr.Reader(['en'])  # You can add more languages like ['en', 'fr']
-        results = reader.readtext(self.image,
+        results = reader.readtext(self.image_path,
                                   allowlist='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
                                   paragraph=True,
                                 #   decoder='beamsearch'      # this increases computational/speed cost
@@ -72,7 +71,6 @@ class ImageExtract:
         for bounding_box, text in results:
             texts += f'{text} \n'
             # print(f"Detected text: {text} (Confidence: {unknown:.2f})")
-        print(texts)
         return texts.upper()
     
     def get_part_and_serial_numbers(self):
@@ -81,13 +79,16 @@ class ImageExtract:
         match = re.findall('ASSY.+SUBASSY', self.image_text)
         print(match)
         if match:
-            match = ''.join(match[0].split(' ')[1:-1])
-            part_number, serial_number = match.split('SER')
-            serial_number = re.findall('[0-9]{4}[0-9]*', serial_number)[0]
-            self.part_number = part_number
-            self.serial_number = serial_number
+            try:
+                part_number, serial_number = ['', '']
+                match = ''.join(match[0].split(' ')[1:-1])
+                part_number, serial_number = match.split('SER')
+                serial_number = re.findall('[0-9]{4}[0-9]*', serial_number)[0]
+            except Exception as err: pass
+            return [part_number, serial_number]
         else:
-            return
+            return ['', '']
+
 
 
 def remove_boxes_morphological(image_path):
@@ -166,9 +167,11 @@ if __name__=="__main__":
         # remove_boxes_morphological(image_path)
         # continue
         image_extract = ImageExtract(image_path)
-        image_extract.get_part_and_serial_numbers()
-        print(image_extract.part_number, image_extract.serial_number)
-        texts[image] = image_extract.image_text
+        texts[image] = {
+                        # 'text': image_extract.image_text,
+                        'part number': image_extract.part_number,
+                        'serial nnumber': image_extract.serial_number
+                        }
         # texts[image] = extract_text_from_image(image_path)
-    with open('output.json', 'w') as f:
+    with open('easyocr_output.json', 'w') as f:
         json.dump(texts, f, indent=3)
