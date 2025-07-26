@@ -11,11 +11,6 @@ import easyocr
 import numpy as np
 
 """ Module Documentation
-
-In all images "ASSY" is the part number
-serial number is either "S/N" or "SER"
-
-extract remove any space, dots
 """
 
 warnings.filterwarnings('ignore')
