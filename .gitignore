@@ -1,3 +1,4 @@
 .DS_Store
 visionAI Keys.json
 easyocr_output.json
+__pychache__
