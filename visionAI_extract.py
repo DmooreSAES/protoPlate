@@ -1,5 +1,4 @@
 # inertnal modules
-import io
 import os
 import re
 import json
@@ -7,7 +6,7 @@ import json
 # external modules
 import cv2
 from google.cloud import vision
-from preprocess import *
+from preprocess import Preprocess
 
 
 """ Module Documentation
@@ -21,6 +20,7 @@ class ImageExtract:
         if not os.path.exists(image_path):
             assert(f"File not found: {image_path}")
         self.image_path = path
+        self.image = Preprocess(self.image_path).gray()     # improves accuracy for some bad image
         self.image_text = self.get_image_text()
         self.part_number, self.serial_number = self.get_part_and_serial_numbers()
 
@@ -38,9 +38,8 @@ class ImageExtract:
         try:
             # with io.open(self.image_path, 'rb') as image_file:
             #     content = image_file.read()
-
-            processed_image = gray(self.image_path)   # improves accuracy for some bad image
-            _, buffer = cv2.imencode('.jpg', processed_image)
+   
+            _, buffer = cv2.imencode('.jpg', self.image)
             content = buffer.tobytes()
             image = vision.Image(content=content)
             
