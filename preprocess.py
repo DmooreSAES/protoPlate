@@ -1,9 +1,5 @@
 # import internal libraries
 import os
-import re
-import time
-import json
-import warnings
 
 # import external libraries
 import cv2
