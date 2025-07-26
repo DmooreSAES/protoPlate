@@ -22,6 +22,7 @@ def resize(image_path) -> object:
         new_width = int(width * scale)
         new_height = int(height * scale)
         img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_LANCZOS4)
+    return img
 
 
 def invert(image_path) -> object:
@@ -31,6 +32,14 @@ def invert(image_path) -> object:
     img = cv2.imread(image_path)
     inverted_image = cv2.bitwise_not(img)
     return inverted_image
+
+
+def gray(image_path) -> object:
+    """ Returns the gray version of an image
+    """
+    img = cv2.imread(image_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gray
 
 
 def binarize(image_path) -> object:
@@ -94,7 +103,7 @@ if __name__=="__main__":
     for image in os.listdir('images'):
         print(image)
         image_path = images_dir + '/' + image
-        img = dilate(image_path)
+        img = invert(image_path)
         cv2.imshow('Image', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()

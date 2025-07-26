@@ -7,7 +7,7 @@ import json
 # external modules
 import cv2
 from google.cloud import vision
-from preprocess import invert
+from preprocess import *
 
 
 """ Module Documentation
@@ -39,7 +39,7 @@ class ImageExtract:
             # with io.open(self.image_path, 'rb') as image_file:
             #     content = image_file.read()
 
-            processed_image = invert(self.image_path)
+            processed_image = gray(self.image_path)   # improves accuracy for some bad image
             _, buffer = cv2.imencode('.jpg', processed_image)
             content = buffer.tobytes()
             image = vision.Image(content=content)
@@ -93,5 +93,5 @@ if __name__=="__main__":
                         'part number': image_extract.part_number,
                         'serial nnumber': image_extract.serial_number
                         }
-    with open('output.json', 'w') as f:
+    with open('outputs/vision output.json', 'w') as f:
         json.dump(texts, f, indent=3)

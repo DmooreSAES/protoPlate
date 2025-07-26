@@ -168,5 +168,5 @@ if __name__=="__main__":
                         'serial nnumber': image_extract.serial_number
                         }
         # texts[image] = extract_text_from_image(image_path)
-    with open('easyocr_output.json', 'w') as f:
+    with open('outputs/easyocr output.json', 'w') as f:
         json.dump(texts, f, indent=3)
