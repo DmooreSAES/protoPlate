@@ -10,6 +10,19 @@ import cv2
 import numpy as np
 
 
+def resize(image_path) -> object:
+    """ Resize if too large (Vision API works best with images < 4MB)
+    """
+    # Load image
+    img = cv2.imread(image_path)
+    
+    height, width = img.shape[:2]
+    if max(height, width) > 2048:
+        scale = 2048 / max(height, width)
+        new_width = int(width * scale)
+        new_height = int(height * scale)
+        img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_LANCZOS4)
+
 
 def invert(image_path) -> object:
     """ Inverts an image. An inverted image is like a photographic negative, where black pixels, 
@@ -34,7 +47,7 @@ def binarize(image_path) -> object:
     # If pixel <= threshold, it becomes 0.
     # Meaning those very close to white, turn it to white, else turn it to black.
     # More white = less pixel, and threshold value, more black = more pixel, threshold values.
-    thresh, binary_image = cv2.threshold(gray, 210, 230, cv2.THRESH_BINARY)
+    thresh, binary_image = cv2.threshold(gray, 170, 220, cv2.THRESH_BINARY)
     return binary_image
 
 
@@ -71,7 +84,7 @@ def dilate(image_path) -> object:
     kernel = np.ones((2,2),np.uint8)
     image = cv2.dilate(image, kernel, iterations=1)
     image = cv2.bitwise_not(image)
-
+    return image
 
 
 
@@ -81,4 +94,7 @@ if __name__=="__main__":
     for image in os.listdir('images'):
         print(image)
         image_path = images_dir + '/' + image
-        
+        img = dilate(image_path)
+        cv2.imshow('Image', img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()

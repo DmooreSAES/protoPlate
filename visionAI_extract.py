@@ -5,7 +5,9 @@ import re
 import json
 
 # external modules
+import cv2
 from google.cloud import vision
+from preprocess import invert
 
 
 """ Module Documentation
@@ -34,9 +36,12 @@ class ImageExtract:
         client = vision.ImageAnnotatorClient()
 
         try:
-            with io.open(self.image_path, 'rb') as image_file:
-                content = image_file.read()
+            # with io.open(self.image_path, 'rb') as image_file:
+            #     content = image_file.read()
 
+            processed_image = invert(self.image_path)
+            _, buffer = cv2.imencode('.jpg', processed_image)
+            content = buffer.tobytes()
             image = vision.Image(content=content)
             
             # document method is useful for better dense text
