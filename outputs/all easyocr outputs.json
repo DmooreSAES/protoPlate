@@ -1,8 +1,8 @@
 {
-    "without preprocess" : {
+    "original" : {
         "9.jpg": {
-            "part number": "6009T92607A",
-            "serial nnumber": "9029"
+            "part number": "0091923024",
+            "serial nnumber": "AI9U29"
         },
         "15.jpg": {
             "part number": "6009192607",
@@ -17,93 +17,24 @@
             "serial nnumber": ""
         },
         "10.jpg": {
-            "part number": "6009192607A",
-            "serial nnumber": "8372"
+            "part number": "",
+            "serial nnumber": "8872"
         },
         "15 color.png": {
             "part number": "6009192607",
-            "serial nnumber": "29024"
+            "serial nnumber": "4029024"
         },
         "27.jpg": {
-            "part number": "3972207",
-            "serial nnumber": "P40"
+            "part number": "",
+            "serial nnumber": ""
         },
         "2.jpg": {
-            "part number": "600919260A",
-            "serial nnumber": "8233"
+            "part number": "600919260",
+            "serial nnumber": "8288"
         }
     },
 
-    "gray":{
-        "9.jpg": {
-            "part number": "6009T92607A",
-            "serial nnumber": "9029"
-        },
-        "15.jpg": {
-            "part number": "6009T92607",
-            "serial nnumber": "29024"
-        },
-        "12.jpg": {
-            "part number": "",
-            "serial nnumber": ""
-        },
-        "13.jpg": {
-            "part number": "",
-            "serial nnumber": ""
-        },
-        "10.jpg": {
-            "part number": "6009192607AA",
-            "serial nnumber": "8372"
-        },
-        "15 color.png": {
-            "part number": "6009192607",
-            "serial nnumber": "29024"
-        },
-        "27.jpg": {
-            "part number": "998172207",
-            "serial nnumber": "PAD"
-        },
-        "2.jpg": {
-            "part number": "6009192607A",
-            "serial nnumber": "8233"
-        }
-    },
-    
-    "inverted" : {
-        "9.jpg": {
-            "part number": "6009192607A",
-            "serial nnumber": "9029"
-        },
-        "15.jpg": {
-            "part number": "6009192607",
-            "serial nnumber": "29024"
-        },
-        "12.jpg": {
-            "part number": "",
-            "serial nnumber": ""
-        },
-        "13.jpg": {
-            "part number": "",
-            "serial nnumber": ""
-        },
-        "10.jpg": {
-            "part number": "6009192607",
-            "serial nnumber": ""
-        },
-        "15 color.png": {
-            "part number": "6009192607",
-            "serial nnumber": "29024"
-        },
-        "27.jpg": {
-            "part number": "BODE92507",
-            "serial nnumber": "2940"
-        },
-        "2.jpg": {
-            "part number": "6009192607A",
-            "serial nnumber": "8233"
-        }
-    },
-    "gray with attempted box removal":{
+    "gray" : {
         "9.jpg": {
             "part number": "6009T92607A",
             "serial nnumber": "9029"
@@ -121,12 +52,115 @@
             "serial nnumber": ""
         },
         "10.jpg": {
-            "part number": "6009T926074",
-            "serial nnumber": "8372"
+            "part number": "6009T92607A8372",
+            "serial nnumber": ""
         },
         "15 color.png": {
             "part number": "6009192607",
             "serial nnumber": "29024"
+        },
+        "27.jpg": {
+            "part number": "092904",
+            "serial nnumber": "940"
+        },
+        "2.jpg": {
+            "part number": "6009192607A",
+            "serial nnumber": "8283"
+        }
+    },
+
+    "gray with attempted dilation": {
+        "9.jpg": {
+            "part number": "0091923024",
+            "serial nnumber": "AI9U29"
+        },
+        "15.jpg": {
+            "part number": "6009192607",
+            "serial nnumber": "29024"
+        },
+        "12.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "13.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "10.jpg": {
+            "part number": "",
+            "serial nnumber": "8872"
+        },
+        "15 color.png": {
+            "part number": "6009192607",
+            "serial nnumber": "4029024"
+        },
+        "27.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "2.jpg": {
+            "part number": "600919260",
+            "serial nnumber": "8288"
+        }
+    },
+    "gray with attempted eroding": {
+        "9.jpg": {
+            "part number": "6009T92607A",
+            "serial nnumber": "9029"
+        },
+        "15.jpg": {
+            "part number": "6009192607",
+            "serial nnumber": "29024"
+        },
+        "12.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "13.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "10.jpg": {
+            "part number": "6009T92607A8372",
+            "serial nnumber": ""
+        },
+        "15 color.png": {
+            "part number": "6009192607",
+            "serial nnumber": "29024"
+        },
+        "27.jpg": {
+            "part number": "092904",
+            "serial nnumber": "940"
+        },
+        "2.jpg": {
+            "part number": "6009192607A",
+            "serial nnumber": "8283"
+        }
+    },
+    "gray with attempted box removal": {
+        "9.jpg": {
+            "part number": "0091923024",
+            "serial nnumber": "AI9U29"
+        },
+        "15.jpg": {
+            "part number": "6009192607",
+            "serial nnumber": "29024"
+        },
+        "12.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "13.jpg": {
+            "part number": "",
+            "serial nnumber": ""
+        },
+        "10.jpg": {
+            "part number": "",
+            "serial nnumber": "8872"
+        },
+        "15 color.png": {
+            "part number": "6009192607",
+            "serial nnumber": "4029024"
         },
         "27.jpg": {
             "part number": "",
@@ -137,4 +171,4 @@
             "serial nnumber": "8288"
         }
     }
-}
+} 

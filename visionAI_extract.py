@@ -14,13 +14,15 @@ from preprocess import Preprocess
 
 
 class ImageExtract:
-    "Class representing all actions on Image"
+    "Class representing all text removal actions on Image"
 
     def __init__(self, path):
         if not os.path.exists(image_path):
             assert(f"File not found: {image_path}")
         self.image_path = path
-        self.image = Preprocess(self.image_path).gray()     # improves accuracy for some bad image
+        image = Preprocess(self.image_path)
+        image.gray()
+        self.image = image.remove_boxes_morphological()  
         self.image_text = self.get_image_text()
         self.part_number, self.serial_number = self.get_part_and_serial_numbers()
 
